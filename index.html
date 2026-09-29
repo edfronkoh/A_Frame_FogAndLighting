@@ -1,0 +1,69 @@
+
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <base href="https://app.bsd.education">
+          
+          
+          
+          <link rel="stylesheet" type="text/css" href="style.css" />
+          
+          <script src="https://app.bsd.education/resources/js/aframe-v1.2.0.min.js"></script>
+          
+        </head>
+        <body>
+          
+
+    <!-- fog for entire scene -->
+    <a-scene background="color: slategray" fog="color: slategray; far: 15; near: 0.1;">
+
+        <a-box position="0 0.4 -3" height="0.8" color="tomato" shadow="receive: true"></a-box>
+
+        <!-- dodecahedron -->
+        <a-dodecahedron id="lightTarget" position="0 1.05 -3" radius="0.5" color="gold" metalness="0.8" shadow="receive: true"></a-dodecahedron>
+
+        <!-- ambient light -->
+        <a-light type="ambient" intensity="0.1"></a-light>
+
+        <!-- directional light -->
+        <a-light type="directional" intensity="0.2" position="-4 3 4" target="#lightTarget"></a-light>
+
+        <!-- point lights on the ceiling -->
+        <a-light type="point" intensity="0.3" distance="10" color="purple" position="0 4 -3"></a-light>
+        <a-light type="point" intensity="0.3" distance="10" color="lightgreen" position="3 4 -6"></a-light>
+        <a-light type="point" intensity="0.3" distance="10" color="lightblue" position="-3 4 -6"></a-light>
+
+        <!-- standing floor lamp,  all parts grouped as an entity -->
+        <a-entity rotation="0 45 0" position="-1.5 0 -4.5">
+            <a-cone position="0 3 0" rotation="-45 0 0" height="0.5" radius-top="0.3" radius-bottom="0.5">
+                <!-- spot light -->
+                <a-light type="spot" light="castShadow: true" color="khaki" intensity="0.4" angle="30" penumbra="0.4" target="#lightTarget"></a-light>
+
+                <!-- point light -->
+                <a-light type="point" color="khaki" intensity="2" position="0 -0.5 0" distance="2"></a-light>
+            </a-cone>
+
+            <!-- neck of the floor lamp -->
+            <a-cylinder position="0 1.5 -0.3 0" color="black" radius="0.05" height="3"></a-cylinder>
+
+            <!-- base of the floor lamp -->
+            <a-cylinder position="0 0.05 0" radius="0.6" color="black" height="0.1"></a-cylinder>
+        </a-entity>
+        <!-- end tag for the entity (floor lamp) -->
+
+        <!-- ceiling -->
+        <a-circle position="0 5 0" color="silver" rotation="90 0 0" radius="25" roughness="0.8"></a-circle>
+
+        <!-- floor -->
+        <a-circle rotation="-90 0 0" radius="25" color="silver" roughness="1" shadow="receive: true"></a-circle>
+
+    </a-scene>
+
+    
+
+          
+          <script type="text/javascript" src="script.js"></script>
+          
+        </body>
+      </html>
+    
